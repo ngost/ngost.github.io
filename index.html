@@ -20,14 +20,14 @@
       var isTouch = ('ontouchstart' in document.documentElement);
 
       if ( !isTouch ) {
-        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/build_file.json");
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/build_webgl_2.json");
       }
     </script>
   </head>
 
   <body>
     <div class="webgl-wrapper">
-      <div class="aspect" style="margin-top: calc(100% / 1920 * 1080);"></div>
+      <div class="aspect" style="margin-top: calc(100% / 1680 * 1050);"></div>
       <div class="webgl-content">
         <div id="unityContainer"></div>
       </div>
