@@ -8,6 +8,8 @@ body {
   background: #000;
   color: #999;
   font-size: 17px;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 a {
@@ -26,7 +28,7 @@ a {
 .webgl-wrapper {
   display: inline-block;
   width: 100%;
-  /*max-width: 1920px; /* remove this line for full width */
+  max-width: 1920px; /* remove this line for full width */
   position: relative;
 }
 
@@ -56,9 +58,11 @@ a {
 }
 
 /* this element makes sure we preserve 16:9 aspect ratio */
-/* for unity versions older than 2020, this is set in-line in index.html */
 
-.aspect { }
+.aspect {
+  /*margin-top: calc(100% / 1920 * 936);*/
+  height:100vh;
+}
 
 /* progress bar */
 

@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>%UNITY_WEB_NAME%</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- unity resources -->
-    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
-
-    <script>
-      // instantiate webgl only if we're not on a touch device
-
-      var isTouch = ('ontouchstart' in document.documentElement);
-
-      if ( !isTouch ) {
-        var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
-      }
-    </script>
+    <title>TSCRawData</title>
   </head>
-
   <body>
     <div class="webgl-wrapper">
-      <div class="aspect" style="margin-top: calc(100% / %UNITY_WIDTH% * %UNITY_HEIGHT%);"></div>
+      <div class="aspect"></div>
       <div class="webgl-content">
-        <div id="unityContainer"></div>
+        <div id="unityContainer">
+          <canvas id="unity-canvas" style="background: #231F20"></canvas>
+        </div>
       </div>
     </div>
-    
+
+    <script src="MyLoader.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/build_webgl.data.gz",
+        frameworkUrl: "Build/build_webgl.framework.js.gz",
+        codeUrl: "Build/build_webgl.wasm.gz",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "TSCRawData",
+        productVersion: "0.1",
+      }).then((unityInstance) => {
+        myGameInstance = unityInstance;
+      });
+    </script>
+
     <!-- check for F key press to toggle full screen -->
     <script>
       var isFullscreen = false;
@@ -40,9 +42,9 @@
       document.addEventListener('keydown', function(event) {
           if (event.which === 70) {
               if (!isFullscreen) {
-                unityInstance.SetFullscreen(1);
+                myGameInstance.SetFullscreen(1);
               } else {
-                unityInstance.SetFullscreen(0);
+                myGameInstance.SetFullscreen(0);
               }
               isFullscreen = !isFullscreen;
           }
