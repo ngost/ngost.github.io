@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>TSCRawData</title>
+    <title>%UNITY_WEB_NAME%</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- unity resources -->
-    <script src="Build/UnityLoader.js"></script>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
 
     <script>
       // instantiate webgl only if we're not on a touch device
@@ -20,14 +20,14 @@
       var isTouch = ('ontouchstart' in document.documentElement);
 
       if ( !isTouch ) {
-        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/build_webgl_2.json");
+        var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
       }
     </script>
   </head>
 
   <body>
     <div class="webgl-wrapper">
-      <div class="aspect" style="margin-top: calc(100% / 1680 * 1050);"></div>
+      <div class="aspect" style="margin-top: calc(100% / %UNITY_WIDTH% * %UNITY_HEIGHT%);"></div>
       <div class="webgl-content">
         <div id="unityContainer"></div>
       </div>
