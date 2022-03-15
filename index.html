@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>TSCRawData</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- unity resources -->
+    <script src="Build/UnityLoader.js"></script>
+
+    <script>
+      // instantiate webgl only if we're not on a touch device
+
+      var isTouch = ('ontouchstart' in document.documentElement);
+
+      if ( !isTouch ) {
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/build_file.json");
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="webgl-wrapper">
+      <div class="aspect" style="margin-top: calc(100% / 1920 * 1080);"></div>
+      <div class="webgl-content">
+        <div id="unityContainer"></div>
+      </div>
+    </div>
+    
+    <!-- check for F key press to toggle full screen -->
+    <script>
+      var isFullscreen = false;
+
+      document.addEventListener('keydown', function(event) {
+          if (event.which === 70) {
+              if (!isFullscreen) {
+                unityInstance.SetFullscreen(1);
+              } else {
+                unityInstance.SetFullscreen(0);
+              }
+              isFullscreen = !isFullscreen;
+          }
+      });
+    </script>
+  </body>
+</html>
