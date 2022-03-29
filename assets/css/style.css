@@ -28,7 +28,6 @@ a {
 .webgl-wrapper {
   display: inline-block;
   width: 100%;
-  max-width: 1920px; /* remove this line for full width */
   position: relative;
 }
 
@@ -60,7 +59,7 @@ a {
 /* this element makes sure we preserve 16:9 aspect ratio */
 
 .aspect {
-  /*margin-top: calc(100% / 1920 * 936);*/
+  /*margin-top: calc(100% / 3840 * 1872);*/
   height:100vh;
 }
 
